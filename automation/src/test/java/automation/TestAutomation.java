@@ -1,7 +1,6 @@
 package automation;
 
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -16,18 +15,14 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import com.gargoylesoftware.htmlunit.html.Keyboard;
 import com.gargoylesoftware.htmlunit.javascript.host.Element;
 import com.sun.javafx.scene.KeyboardShortcutsHandler;
-
-
 
 public class TestAutomation {
 	
 	WebDriver driver;
 	private static final Logger log = Logger.getLogger(TestAutomation.class.getName());
-	
 	String url="";
 	
 	@BeforeClass
@@ -35,11 +30,10 @@ public class TestAutomation {
 		driver = new FirefoxDriver();
 		url="https://the-internet.herokuapp.com";
 		driver.get(url);
-		driver.manage().window().maximize();
-		
+		driver.manage().window().maximize();	
 	}
 	
-	//@Test
+	@Test
 	public void scenario1() throws InterruptedException{
 		//Navigate command is used here in all the test case to make sure test cases are running properly
 		//When running as random individual tests
@@ -72,13 +66,10 @@ public class TestAutomation {
 		Assert.assertTrue(true);
 		}else{
 			Assert.assertTrue(false,"Text in the paragraph body is not empty");
-		}
-		
-	
-		
+		}	
 	}
 	
-//	@Test
+	@Test
 	public void scenario2(){
 		//Navigate command is used here in all the test case to make sure test cases are running properly
 		//When running as random individual tests
@@ -90,14 +81,11 @@ public class TestAutomation {
 		driver.navigate().refresh();
 		List<WebElement> list2 = driver.findElements(By.tagName("li"));	
 		int size2=list2.size();
-		log.info(size2);
-		
+		log.info(size2);		
 		Assert.assertEquals(size1, size2-1,"Number of items in the list before refresh : "+size1+ " Number of items in the list after refresh "+size2);
-	
 		
 	}
-//	@Test
-	
+	@Test	
 	public void scenario3(){
 	
 	driver.navigate().to(url);	
@@ -108,17 +96,16 @@ public class TestAutomation {
 	String usertoolTipText = driver.findElement(By.xpath("//div[@class='figcaption']/h5")).getText();
 	String profileToolTipText=driver.findElement(By.xpath("//div[@class='figcaption']/a")).getText();
 	Assert.assertEquals(usertoolTipText, "name: user1");
-	Assert.assertEquals(profileToolTipText, "View profile");
-	
+	Assert.assertEquals(profileToolTipText, "View profile");	
 	}
 	
-	//@Test
+	@Test
 	public void scenario4() throws InterruptedException{
 		
-		driver.navigate().to("http://admin:admin@the-internet.herokuapp.com/basic_auth");
-		log.info("http://admin:admin@"+url+"/basic_auth");
-		String loginText=driver.findElement(By.xpath("//p")).getText();
-		Assert.assertEquals(loginText, "Congratulations! You must have the proper credentials.");
+	driver.navigate().to("http://admin:admin@the-internet.herokuapp.com/basic_auth");
+	log.info("http://admin:admin@"+url+"/basic_auth");
+	String loginText=driver.findElement(By.xpath("//p")).getText();
+	Assert.assertEquals(loginText, "Congratulations! You must have the proper credentials.");
 	}
 	
 	@Test
