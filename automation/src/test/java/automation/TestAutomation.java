@@ -33,7 +33,7 @@ public class TestAutomation {
 		driver.manage().window().maximize();	
 	}
 	
-	@Test
+	@Test(priority = 5, enabled = true)
 	public void scenario1() throws InterruptedException{
 		//Navigate command is used here in all the test case to make sure test cases are running properly
 		//When running as random individual tests
@@ -69,7 +69,7 @@ public class TestAutomation {
 		}	
 	}
 	
-	@Test
+	@Test(priority = 1, enabled = true)
 	public void scenario2(){
 		//Navigate command is used here in all the test case to make sure test cases are running properly
 		//When running as random individual tests
@@ -85,7 +85,7 @@ public class TestAutomation {
 		Assert.assertEquals(size1, size2-1,"Number of items in the list before refresh : "+size1+ " Number of items in the list after refresh "+size2);
 		
 	}
-	@Test	
+	@Test(priority = 2, enabled = true)
 	public void scenario3(){
 	
 	driver.navigate().to(url);	
@@ -99,7 +99,7 @@ public class TestAutomation {
 	Assert.assertEquals(profileToolTipText, "View profile");	
 	}
 	
-	@Test
+	@Test(priority = 3, enabled = true)
 	public void scenario4() throws InterruptedException{
 		
 	driver.navigate().to("http://admin:admin@the-internet.herokuapp.com/basic_auth");
@@ -108,7 +108,7 @@ public class TestAutomation {
 	Assert.assertEquals(loginText, "Congratulations! You must have the proper credentials.");
 	}
 	
-	@Test
+	@Test(priority = 4, enabled = true)
 	public void scenario6() throws InterruptedException{
 			
 	driver.navigate().to("http://www.jqueryrain.com/?5JwC1hwx");
