@@ -91,7 +91,7 @@ public class TestAutomation {
 	driver.navigate().to(url);	
 	driver.findElement(By.linkText("Hovers")).click();
 	Actions actions = new Actions(driver);
-	WebElement element = driver.findElement(By.cssSelector("div.row div#content.large-12.columns div.example div.figure img"));
+	WebElement element = driver.findElement(By.xpath("//div[@id='content']//div[@class='figure']"));
 	actions.moveToElement(element).build().perform();
 	String usertoolTipText = driver.findElement(By.xpath("//div[@class='figcaption']/h5")).getText();
 	String profileToolTipText=driver.findElement(By.xpath("//div[@class='figcaption']/a")).getText();
