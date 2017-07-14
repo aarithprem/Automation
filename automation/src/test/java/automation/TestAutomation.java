@@ -119,18 +119,18 @@ public class TestAutomation {
 	WebElement iframeMsg1 = driver.findElement(By.xpath("//*[contains(@id, 'iframe1')]"));        
 	driver.switchTo().frame(iframeMsg1);	
 	
-	driver.findElement(By.xpath("//ul[@class='tabAnchor']/li[2]/a")).click();
+	driver.findElement(By.xpath("//ul[@class='tabAnchor']/child::*//a[@href='#tabs-2']")).click();
 	WebDriverWait wait = new WebDriverWait(driver, 40);
 	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='tabs-2' and @class='tabContent']/p")));
 	String text= driver.findElement(By.xpath("//div[@id='tabs-2' and @class='tabContent']/p")).getText();
 	
 	Assert.assertTrue(text.contains("pre loader rolling"), "pre loader rolling text is not displayed");
-	WebElement element1 = driver.findElement(By.xpath("//ul[@class='tabAnchor']/li[1]/a"));
+	WebElement element1 = driver.findElement(By.xpath("//ul[@class='tabAnchor']/child::*//a[@href='#tabs-1']"));
 	wait.until(ExpectedConditions.elementToBeClickable(element1));
 	element1.click();
-	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table/tbody/tr/td/div/div/div[1]/ul/li")));
+	wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//child::*//div[@id='tabs-1']/ul/li")));
 	
-	List<WebElement> allElements = driver.findElements(By.xpath("//table/tbody/tr/td/div/div/div[1]/ul/li")); 
+	List<WebElement> allElements = driver.findElements(By.xpath("//child::*//div[@id='tabs-1']/ul/li")); 
 	
 	for(WebElement element: allElements){
 		System.out.println(element.getText());
